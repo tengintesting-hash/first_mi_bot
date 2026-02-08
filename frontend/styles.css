@@ -1,0 +1,128 @@
+:root {
+  color-scheme: light;
+  font-family: "Inter", sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 20px;
+  background: #111827;
+  color: #fff;
+}
+
+.app-header h1 {
+  margin: 0 0 4px;
+}
+
+.banner {
+  padding: 12px 20px;
+  background: #fee2e2;
+  color: #991b1b;
+  margin: 12px 20px;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+.task-list {
+  display: grid;
+  gap: 16px;
+}
+
+.task {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.task .badge {
+  display: inline-block;
+  background: #f59e0b;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.task button {
+  margin-top: 10px;
+}
+
+.card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.bottom-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.bottom-nav button {
+  background: transparent;
+  color: #111827;
+  padding: 14px;
+  border-radius: 0;
+}
+
+.bottom-nav button.active {
+  background: #e0e7ff;
+  font-weight: 600;
+}
