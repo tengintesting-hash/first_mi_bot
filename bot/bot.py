@@ -1,12 +1,13 @@
-import asyncio
 import logging
 import os
 import sqlite3
+import time
 from contextlib import contextmanager
 from typing import Iterable, Optional
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.constants import ChatMemberStatus
+from telegram.error import NetworkError, TimedOut, TelegramError
 from telegram.ext import (
     Application,
     CallbackQueryHandler,
@@ -202,7 +203,13 @@ def main() -> None:
     application.add_handler(CallbackQueryHandler(handle_check_subscribe, pattern="^check_subscribe$"))
     application.add_handler(ChatJoinRequestHandler(handle_join_request))
 
-    application.run_polling()
+    while True:
+        try:
+            application.run_polling()
+            break
+        except (TimedOut, NetworkError, TelegramError) as exc:
+            logging.error("Помилка мережі при запуску бота: %s", exc)
+            time.sleep(5)
 
 
 if __name__ == "__main__":
