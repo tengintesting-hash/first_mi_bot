@@ -196,16 +196,16 @@ def main() -> None:
     token = os.getenv("BOT_TOKEN")
     if not token:
         raise RuntimeError("BOT_TOKEN is required")
-    application = Application.builder().token(token).build()
-
-    application.add_handler(CommandHandler("start", handle_start))
-    application.add_handler(CommandHandler("ref", handle_ref))
-    application.add_handler(CallbackQueryHandler(handle_check_subscribe, pattern="^check_subscribe$"))
-    application.add_handler(ChatJoinRequestHandler(handle_join_request))
-
     while True:
         try:
-            application.run_polling()
+            application = Application.builder().token(token).build()
+
+            application.add_handler(CommandHandler("start", handle_start))
+            application.add_handler(CommandHandler("ref", handle_ref))
+            application.add_handler(CallbackQueryHandler(handle_check_subscribe, pattern="^check_subscribe$"))
+            application.add_handler(ChatJoinRequestHandler(handle_join_request))
+
+            application.run_polling(close_loop=False)
             break
         except (TimedOut, NetworkError, TelegramError) as exc:
             logging.error("Помилка мережі при запуску бота: %s", exc)
