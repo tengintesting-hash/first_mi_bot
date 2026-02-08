@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRO Casino</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <h1>PRO Casino</h1>
+        <p>Завдання та бонуси для користувачів</p>
+      </header>
+      <div id="error-banner" class="banner hidden"></div>
+      <main>
+        <section id="home" class="tab active">
+          <h2>Завдання</h2>
+          <div id="tasks" class="task-list"></div>
+        </section>
+        <section id="earn" class="tab">
+          <h2>Заробіток</h2>
+          <div class="card">
+            <p>Запрошено: <span id="ref-count">0</span></p>
+            <button id="copy-ref">Скопіювати реферальне посилання</button>
+          </div>
+        </section>
+        <section id="wallet" class="tab">
+          <h2>Гаманець</h2>
+          <div class="card">
+            <p>Баланс PRO: <span id="balance-pro">0</span></p>
+            <p>Баланс USD: <span id="balance-usd">0</span></p>
+          </div>
+          <form id="withdraw-form" class="card">
+            <label>
+              PRO
+              <input type="number" id="withdraw-pro" min="0" value="0" />
+            </label>
+            <label>
+              USD
+              <input type="number" id="withdraw-usd" min="0" value="0" step="0.01" />
+            </label>
+            <label>
+              Реквізити
+              <input type="text" id="withdraw-details" placeholder="Вкажіть спосіб виводу" />
+            </label>
+            <button type="submit">Подати заявку на вивід</button>
+          </form>
+        </section>
+      </main>
+      <nav class="bottom-nav">
+        <button data-tab="home" class="active">Головна</button>
+        <button data-tab="earn">Заробіток</button>
+        <button data-tab="wallet">Гаманець</button>
+      </nav>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
